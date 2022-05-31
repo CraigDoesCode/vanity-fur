@@ -1,11 +1,17 @@
-<%= simple_form_for [@item] do |f| %>
-  <%= f.input :price %>
-  <%= f.input :name %>
-  <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
-  <%= f.input :availability %> <%# need this to say when it is available dates? %>
-  <%= f.input :description %>
-  <%= f.input :rating %>
-  <%= f.association :user %>
-  <%# <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  Add New Item
+</div>
+
+<div class="container ">
+  <%= simple_form_for [@item] do |f| %>
+    <%= f.input :price, as: :currency %>
+    <%= f.input :name %>
+    <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
+    <%= f.input :availability %> <%# need this to say when it is available dates? %>
+    <%= f.input :description %>
+    <%= f.input :rating %>
+    <%= f.association :user %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit %>
+  <% end %>
+</div>

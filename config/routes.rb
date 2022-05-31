@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :bookings, only: [:show, :new, :create]
   end
-  resources :bookings, only: :destroy
+  resources :bookings, only: [:show, :index, :destroy]
 
   resources :user do
     resources :items, only: [:index, :show, :new, :create]

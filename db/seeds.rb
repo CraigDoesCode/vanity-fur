@@ -5,14 +5,52 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Item.destroy_all
+User.destroy_all
 
+categories = ["jumper", "hat", "shoes", "bra", "belt", "dress"]
 User.create(email: "tilly@tilly.com", password: 123456, first_name: "Tilly", last_name: "Bishop", rating: 7)
 User.create(email: "craig@craig.com", password: 123456, first_name: "Craig", last_name: "Norford", rating: 3)
 User.create(email: "olivia@olivia.com", password: 123456, first_name: "Olivia", last_name: "McSweeney", rating: 8)
 User.create(email: "emily@emily.com", password: 123456, first_name: "Emily", last_name: "Tregelles", rating: 9)
 
-Item.create(user_id: 1, price: 4.75, name: "Louise Vuitton jumper", size: "Small", availability: true, description: "Cute pink jumper with hearts and rhinestones on it.", rating: 8)
-Item.create(user_id: 2, price: 8.50, name: "Primarni bra", size: "Large", availability: false, description: "Big lacy black bra.", rating: 7)
-Item.create(user_id: 1, price: 9.20, name: "Jimmy Choo Choo Heels", size: "Medium", availability: true, description: "8 inch snake skin platform heels. Super cute for wearing around the dog park!", rating: 10)
-Item.create(user_id: 3, price: 3.30, name: "Gucki belt", size: "Small", availability: false, description: "Dark brown belt with flashing lights for accessorising your pups cute little belly!", rating: 4)
-Item.create(user_id: 4, price: 15, name: "Prader dress", size: "Medium", availability: true, description: "Floor length LBD. Not recommended to wear to the park.", rating: 2)
+Item.create!(user: User.all.sample,
+            price: 4.75,
+            name: "Louise Vuitton jumper",
+            size: "Small",
+            availability: true,
+            description: "Cute pink jumper with hearts and rhinestones on it.",
+            rating: 8,
+            category: "jumper")
+Item.create!(user: User.all.sample,
+            price: 8.50,
+            name: "Primarni bra",
+            size: "Large",
+            availability: false,
+            description: "Big lacy black bra.",
+            rating: 7,
+            category: "bra")
+Item.create!(user: User.all.sample,
+            price: 9.20,
+            name: "Jimmy Choo Choo Heels",
+            size: "Medium",
+            availability: true,
+            description: "8 inch snake skin platform heels. Super cute for wearing around the dog park!",
+            rating: 10,
+            category: "shoes")
+Item.create!(user: User.all.sample,
+            price: 3.30,
+            name: "Gucki belt",
+            size: "Small",
+            availability: false,
+            description: "Dark brown belt with flashing lights for accessorising your pups cute little belly!",
+            rating: 4,
+            category: "belt")
+Item.create!(user: User.all.sample,
+            price: 15,
+            name: "Prader dress",
+            size: "Medium",
+            availability: true,
+            description: "Floor length LBD. Not recommended to wear to the park.",
+            rating: 2,
+            category: "dress")

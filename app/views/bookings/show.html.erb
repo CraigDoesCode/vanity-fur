@@ -1,0 +1,13 @@
+<div class="container">
+  <br>
+  <h3>Item: <%= @booking.item.name %></h3>
+  <br>
+  <p>Booking Start Date: <%= @booking.start_date %> </p>
+  <p>Booking End Date: <%= @booking.end_date %> </p>
+  <p>Booking Notes: <%= @booking.notes %> </p>
+  <% if @booking.confirmed == true  %>
+    <p>This booking is confirmed</p>
+  <% else %>
+    <p>This booking is <strong>not</strong> confirmed</p>
+  <% end %>
+</div>

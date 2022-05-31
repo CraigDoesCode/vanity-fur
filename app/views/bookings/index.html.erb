@@ -2,6 +2,7 @@
   <h1>My Bookings</h1>
   <br>
   <% @bookings.each do |booking| %>
-    <p><%= link_to booking.item.name, booking_path(booking) %></p>
+    <p><%= link_to booking.item.name, booking_path(booking) %> <%= link_to "Delete",
+    booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
   <% end %>
 </div>

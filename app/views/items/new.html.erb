@@ -1,0 +1,11 @@
+<%= simple_form_for [@item] do |f| %>
+  <%= f.input :price %>
+  <%= f.input :name %>
+  <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
+  <%= f.input :availability %> <%# need this to say when it is available dates? %>
+  <%= f.input :description %>
+  <%= f.input :rating %>
+  <%= f.association :user %>
+  <%# <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>

@@ -30,7 +30,7 @@
               <%= link_to "Home", root_path, class: "dropdown-item" %>
               <%= link_to "All Items", items_path, class: "dropdown-item" %>
               <%= link_to "Add Item", new_item_path, class: "dropdown-item" %>
-              <%= link_to "Order History", '#', class: "dropdown-item" %>
+              <%= link_to "Order History", 'bookings', class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

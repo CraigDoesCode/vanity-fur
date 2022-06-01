@@ -1,11 +1,13 @@
+
 <div>
-<h3>Name: <%= @item.name  %> £<%= @item.price  %></h3>
-<p>Size: <%= @item.size  %></p>
-<p><%= @item.description %></p>
-<p>Rating: <%= @item.rating %></p>
-<% @item.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-</div>
+    <h3>Name: <%= @item.name  %> £<%= @item.price  %></h3>
+    <p>Size: <%= @item.size  %></p>
+    <p><%= @item.description %></p>
+    <p>Rating: <%= @item.rating %></p>
+    <% @item.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+
 
 <%= link_to "Back to all items", items_path %>

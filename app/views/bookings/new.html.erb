@@ -1,11 +1,14 @@
 <div class="container">
   <h1>New Rental</h1>
 </div>
-<div class="container">
-  <%= simple_form_for(@booking) do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :notes %>
-    <%= f.submit %>
-  <% end %>
+
+<div class="form-container">
+  <div class="container m-5 p-5">
+    <%= simple_form_for [@item, @booking] do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :notes %>
+      <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+      <% end %>
+  </div>
 </div>

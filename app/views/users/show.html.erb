@@ -1,0 +1,6 @@
+<div>
+<h1>My Items:</h1>
+<% @items.each do |item| %>
+<h2><%= link_to item.name, item_path(item) %></h2>
+<% end %>
+</div>

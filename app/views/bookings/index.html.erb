@@ -2,25 +2,25 @@
   <h1>My Rentals</h1>
   <br>
   <h2>Current Rentals</h2>
-  <% if @bookings.empty?  %>
-    <p>No current rentals</p>
-  <% else %>
+  <%# <% if @bookings.empty?  %>
+    <%# <p>No current rentals</p> %>
+  <%# <% else %>
     <% @bookings.each do |booking| %>
-      <% if booking.completed == true %>
+      <% if booking.completed == false %>
         <p><%= link_to booking.item.name, booking_path(booking) %> <%= link_to "Cancel Order",
         booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
       <% end %>
     <% end %>
-  <% end %>
+  <%# <% end %>
 <br>
   <h2>Previous Rentals</h2>
-  <% if @bookings.empty?  %>
-    <p>No previous rentals</p>
-  <% else %>
+  <%# <% if @bookings.empty?  %>
+    <%# <p>No previous rentals</p> %>
+  <%# <% else %>
     <% @bookings.each do |booking| %>
-      <% if booking.completed == false %>
+      <% if booking.completed == true %>
         <p><%= link_to booking.item.name, booking_path(booking) %></p>
       <% end %>
     <% end %>
-  <% end %>
+  <%# <% end %>
 </div>

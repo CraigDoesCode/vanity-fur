@@ -8,15 +8,20 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @item = Item.find(params[:item_id])
     @booking = Booking.new
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @booking = Booking.new(booking_params)
-    @booking.item = @item
-    @booking.user = current_user
-    flash[:notice] = @booking.errors.full_messages.to_sentence unless @booking.save
-    redirect_to bookings_path(@bookings)
+    @booking.item_id = @item.id
+    @booking.user_id = current_user.id
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -28,6 +33,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit()
+    params.require(:booking).permit(:start_date, :end_date, :notes)
   end
 end

@@ -1,8 +1,18 @@
 <div class="container">
-  <h1>My Bookings</h1>
+  <h1>My Orders</h1>
   <br>
+  <h2>Current Orders</h2>
   <% @bookings.each do |booking| %>
-    <p><%= link_to booking.item.name, booking_path(booking) %> <%= link_to "Delete",
-    booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+    <% if booking.completed == true %>
+      <p><%= link_to booking.item.name, booking_path(booking) %> <%= link_to "Cancel Order",
+      booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+    <% end %>
+  <% end %>
+<br>
+  <h2>Previous Orders</h2>
+  <% @bookings.each do |booking| %>
+    <% if booking.completed == false %>
+      <p><%= link_to booking.item.name, booking_path(booking) %></p>
+     <% end %>
   <% end %>
 </div>

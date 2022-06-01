@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>VanityFur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,11 +12,28 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <div class="footer-container"><%= render "shared/footer" %></div>
+    <div class="page-container">
+      <div class="navbar-container">
+        <%= render "shared/navbar" %>
+      </div>
+
+    <div class="content-container">
+      <%= render "shared/flashes" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+
+    <div class="footer-container">
+      <%= render "shared/footer" %>
+    </div>
   </body>
+    </div>
+
 </html>
+
+
+
+
+
+</div>

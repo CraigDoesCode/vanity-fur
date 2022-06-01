@@ -1,12 +1,24 @@
-<div>
-<h3>Name: <%= @item.name  %> £<%= @item.price  %></h3>
-<p>Size: <%= @item.size  %></p>
-<p><%= @item.description %></p>
-<p>Rating: <%= @item.rating %></p>
-<p>User ID:<%= @item.user_id %></p>
-<% @item.photos.each do |photo| %>
+<div class = "container">
+<div class="carousel">
+<div class="gallery gallery-a js-flickity">
+</div>
+<div class="gallery gallery-b js-flickity"
+  data-flickity-options='{ "asNavFor": ".gallery-a" }'>
+  <% @item.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
 </div>
+</div>
+
+<div class="details">
+<p id="owner"><%= @item.user.first_name %> <%= image_tag "app/images", style: 'height:50vw;width:100vw;margin-bottom:20px;' %> %></p>
+<h3><%= @item.name  %> £<%= @item.price  %></h3>
+<p>Size: <%= @item.size  %></p>
+<p><%= @item.description %></p>
+<p>Rating: <%= @item.rating %></p>
+
+</div>
+</div>
+
 
 <%= link_to "Back to all items", items_path %>

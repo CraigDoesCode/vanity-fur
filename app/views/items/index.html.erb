@@ -1,8 +1,23 @@
-<div>
-<% @items.each do |item| %>
-<h2><%= link_to item.name, item_path(item) %></h2>
-<% end %>
+<div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/photos/curious-border-collie-dog-looking-down-with-a-white-banner-or-a-in-picture-id1312943563?b=1&k=20&m=1312943563&s=170667a&w=0&h=OK2REXa1Wtcx2uwPSv_7xc2nquxcy7RN-yykakz1ugA=)">
+ <h2>Vanity Fur</h2>
 </div>
+
+
+
+
+<% @items.each do |item| %>
+  <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= link_to item.name, item_path(item) %></h2>
+      <p>Short description here!</p>
+    </div>
+      <h2 class="card-trip-pricing">£99.99</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
+<% end %>
 
 <div>
 <%= link_to "New Item", new_item_path(@item) %>

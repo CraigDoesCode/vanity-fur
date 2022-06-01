@@ -8,5 +8,5 @@
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
 </div>
-
-<%= link_to "Back to all items", items_path %>
+<p><%= link_to "Rent this item", new_item_booking_path(@item) %></p>
+<p><%= link_to "Back to all items", items_path %></p>

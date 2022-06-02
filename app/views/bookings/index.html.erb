@@ -10,4 +10,11 @@
   <p>You currently have no rental requests</p>
 <% end %>
 <br>
-<p>My Rental Requests</p>
+<p>My Approved Rental Requests</p>
+<% if @approved_requests.empty? == false %>
+  <% @approved_requests.each do |booking| %>
+    <p><%= link_to booking.item.name, booking_path(booking) %> </p>
+  <% end %>
+<% else %>
+  <p>You currently have no approved rental requests</p>
+<% end %>

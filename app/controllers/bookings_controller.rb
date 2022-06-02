@@ -3,9 +3,16 @@ class BookingsController < ApplicationController
     @items = Item.where(user: current_user)
     @all_bookings = Booking.all
     @booking_requests = []
+    @approved_requests = []
     @all_bookings.each do |booking|
       @item = Item.find(booking.item_id)
-      @booking_requests.push(booking) if @item.user_id == current_user.id && booking.confirmed == false
+      if @item.user_id == current_user.id
+        if booking.confirmed == false
+          @booking_requests.push(booking)
+        else
+          @approved_requests.push(booking)
+        end
+      end
     end
   end
 

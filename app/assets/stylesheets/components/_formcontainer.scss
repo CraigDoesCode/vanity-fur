@@ -12,6 +12,16 @@
   background-size: cover;
 }
 
+
+.container-dates {
+  display: flex;
+  width: 100%;
+}
+
+.form-image {
+  padding-bottom: 16px;
+  padding-top: 16px;
+
 .form-label {
   font-size: larger;
   text-transform: uppercase;
@@ -28,6 +38,5 @@
 }
 
 .form-select {
-
   border-radius: 8px;
 }

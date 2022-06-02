@@ -1,30 +1,32 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <div class = "d-flex align-items-center">
+    <div class = "d-flex align-items-center">
+      <%= link_to root_path, class: "navbar-brand d-flex" do %>
         <%= image_tag "https://tse1.mm.bing.net/th?id=OIP.DLwi70Wk4MA9rUMcKpRGqwHaHi&pid=Api&rs=1&c=1&qlt=95&w=111&h=113" %>
         <h1 class = "px-4 mb-0">Vanity Fur</h1>
-        <p class = "pt-2 px-5 mb-0"> Search Items</h2>
-        <i class="fa-solid fa-paw pt-2 pl-5"></i>
-        <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="search-form-control form-group">
-        <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-        <button name="button" type="submit" class="btn btn-flat">
+      <% end %>
+      <%= link_to "Attire", items_path, class: "nav-link" %>
+      <%= link_to "", new_user_registration_path, class: "nav-link" %>
+    </div>
+    <div>
+      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+        <div class="search-form-control form-group">
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search Attire" />
+          <button name="button" type="submit" class="btn btn-flat">
           <i class="fas fa-search"></i>
         </button>
-      </div>
-    <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
+            <%= link_to "Share your sWAG", new_item_path, class: "btn btn-primary mx-5" %>
             <%= image_tag current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Home", root_path, class: "dropdown-item" %>
@@ -36,6 +38,8 @@
           </li>
         <% else %>
           <li class="nav-item">
+          <%= link_to "Share your sWAG", new_item_path, class: "nav-link" %>
+            <%= link_to "Sign Up", new_registration_path, class: "nav-link" %>
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>

@@ -1,0 +1,6 @@
+<%= simple_form_for [@item, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :notes %>
+  <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+<% end %>

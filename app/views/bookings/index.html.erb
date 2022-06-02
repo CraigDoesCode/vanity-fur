@@ -1,20 +1,22 @@
 <div class="container">
   <h1>Bookings</h1>
 <br>
-<p>Rental Requests For My Items</p>
+<h3>Pending Rental Requests</h3>
 <% if @booking_requests.empty? == false %>
   <% @booking_requests.each do |booking| %>
     <p><%= link_to booking.item.name, booking_path(booking) %> </p>
   <% end %>
 <% else %>
-  <p>You currently have no rental requests</p>
+  <p>You currently have no pending requests</p>
 <% end %>
 <br>
-<p>My Approved Rental Requests</p>
+<h3>Confirmed Requests</h3>
 <% if @approved_requests.empty? == false %>
   <% @approved_requests.each do |booking| %>
-    <p><%= link_to booking.item.name, booking_path(booking) %> </p>
+    <% if booking.notes != "rejected" %>
+      <p> <%= link_to booking.item.name, booking_path(booking) %> </p>
+    <% end %>
   <% end %>
 <% else %>
-  <p>You currently have no approved rental requests</p>
+  <p>You currently have no confirmed requests</p>
 <% end %>

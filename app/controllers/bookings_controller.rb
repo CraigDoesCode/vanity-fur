@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     @all_bookings.each do |booking|
       @item = Item.find(booking.item_id)
       if @item.user_id == current_user.id
-        if booking.confirmed == false
+        if booking.confirmed == false && booking.notes != "rejected"
           @booking_requests.push(booking)
         else
           @approved_requests.push(booking)
@@ -47,12 +47,13 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:booking])
     @booking.confirmed = true
     @booking.save
-    redirect_to booking_path(@booking), notice: "Request Approved!"
+    redirect_to bookings_path, notice: "Request Approved!"
   end
 
   def reject_booking
     @booking = Booking.find(params[:booking])
     @booking.confirmed = false
+    @booking.notes = "rejected"
     @booking.save
     redirect_to bookings_path, notice: "Request Rejected"
   end

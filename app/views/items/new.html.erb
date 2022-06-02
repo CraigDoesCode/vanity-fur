@@ -4,18 +4,15 @@
 
 <div class="form-container pb-5">
 <div class="container container-form pt-5" style="width: 500px; height: 800px">
-<h2 class="form-heading pr-5" style= "color: white;">Add your pawfect sWAGS</h2>
+<h2 class="form-heading pr-5 pb-5" style= "color: white;">Add your pawfect sWAGS</h2>
   <%= simple_form_for [@item] do |f| %>
-    <%= f.input :price, as: :currency %>
     <%= f.input :name %>
+    <%= f.input :category, collection: ["Hats", "Shoes", "Hoodies", "Jackets", "Leads/Harness", "Other"] %>
+    <%= f.input :price, as: :currency %>
     <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
-    <%= f.input :availability %> <%# need this to say when it is available dates? %>
     <%= f.input :description %>
-    <%= f.input :rating %>
-    <%= f.association :user %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-
-    <div style="text-align:center">
+    <div class = "pt-5" style="text-align:center">
       <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
     </div>
   <% end %>

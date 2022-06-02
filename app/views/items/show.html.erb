@@ -1,12 +1,59 @@
-<div>
-<h3>Name: <%= @item.name  %> £<%= @item.price  %></h3>
-<p>Size: <%= @item.size  %></p>
-<p><%= @item.description %></p>
-<p>Rating: <%= @item.rating %></p>
-<p>User ID:<%= @item.user_id %></p>
-<% @item.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="show-page">
+
+    <h1 id="item-name" class="card-category"><%= @item.name  %></h1> <br>
+
+<div class = "show-container">
+
+  <div id="carousel-whole">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= cl_image_tag @item.photos[0].key, class:"d-block w-100" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @item.photos[1].key, class:"d-block w-100" %>
+        </div>
+        <div class="carousel-item">
+              <%= cl_image_tag @item.photos[2].key, class:"d-block w-100" %>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="details">
+
+    <h3 id="owner">Owned by:    <%= @item.user.first_name %> <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class:"avatar" %></h3>
+    <br>
+    <br>
+    <div class="main-text">
+    <h1> £<%= @item.price.to_i  %>/day</h1>
+    <br>
+    <br>
+    <h4><strong> Size: </strong><%= @item.size  %></h4>
+    <br>
+    <h4><strong> More info: </strong><%= @item.description %></h4>
+    <br>
+    <h4><strong> Rating: </strong> <%= @item.rating %></h4>
+    <br>
+    </div>
+    <p class="btn btn-gradient btn-lg"><%= link_to "Rent this item", new_item_booking_path(@item) %></p>
+  </div>
+
 </div>
-<p><%= link_to "Rent this item", new_item_booking_path(@item) %></p>
-<p><%= link_to "Back to all items", items_path %></p>
+
+
+<p class="d-flex justify-content-center btn btn-gradient btn-lg"><%= link_to "Back to all items", items_path %></p>
+</div>

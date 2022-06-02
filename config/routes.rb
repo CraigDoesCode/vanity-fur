@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:destroy, :show, :index]
 
   resources :users, only: :show
+  get "accept_booking", to: "bookings#accept_booking"
+  get "reject_booking", to: "bookings#reject_booking"
+
 end

@@ -23,7 +23,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.item_id = @item.id
     @booking.user_id = current_user.id
-    # @booking.item.user.bookings.append(@booking)
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -37,13 +36,23 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, status: :see_other
   end
 
+  def accept_booking
+    @booking = Booking.find(params[:booking])
+    @booking.confirmed = true
+    @booking.save
+    redirect_to booking_path(@booking), status: :see_other
+  end
+
+  def reject_booking
+    @booking = Booking.find(params[:booking])
+    @booking.confirmed = false
+    @booking.save
+    redirect_to booking_path(@booking), status: :see_other
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :notes)
-  end
-
-  def find_by(*args)
-    where(*args).take
   end
 end

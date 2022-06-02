@@ -40,14 +40,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:booking])
     @booking.confirmed = true
     @booking.save
-    redirect_to booking_path(@booking), status: :see_other
+    redirect_to booking_path(@booking), notice: "Request Approved!"
   end
 
   def reject_booking
     @booking = Booking.find(params[:booking])
     @booking.confirmed = false
     @booking.save
-    redirect_to booking_path(@booking), status: :see_other
+    redirect_to bookings_path, notice: "Request Rejected"
   end
 
   private

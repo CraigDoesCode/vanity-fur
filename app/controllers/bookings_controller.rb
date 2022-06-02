@@ -1,6 +1,19 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(user: current_user)
+    @items = Item.where(user: current_user)
+    @all_bookings = Booking.all
+    @booking_requests = []
+    @approved_requests = []
+    @all_bookings.each do |booking|
+      @item = Item.find(booking.item_id)
+      if @item.user_id == current_user.id
+        if booking.confirmed == false && booking.notes != "rejected"
+          @booking_requests.push(booking)
+        else
+          @approved_requests.push(booking)
+        end
+      end
+    end
   end
 
   def show
@@ -28,6 +41,21 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path, status: :see_other
+  end
+
+  def accept_booking
+    @booking = Booking.find(params[:booking])
+    @booking.confirmed = true
+    @booking.save
+    redirect_to bookings_path, notice: "Request Approved!"
+  end
+
+  def reject_booking
+    @booking = Booking.find(params[:booking])
+    @booking.confirmed = false
+    @booking.notes = "rejected"
+    @booking.save
+    redirect_to bookings_path, notice: "Request Rejected"
   end
 
   private

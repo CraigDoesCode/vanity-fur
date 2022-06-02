@@ -5,7 +5,7 @@
   <div class=""><%= @item.name  %></h1>
   <div class="d-flex justify-content-center">
     <div class="w-50">
-      <%= cl_image_tag @item.photos[0].key, class: "w-100" %>
+      <%= image_tag @item.photos.attached? ? cl_image_path(@item.photos[0].key) : "doggreen.jpg", class: "w-100" %>
       <h3><%= @item.name%></h3>
       <div class="main-text">
         <div class="d-flex">

@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
       SQL
       @items = Item.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
-      @items = Item.all.revers
+      @items = Item.all.reverse
     end
   end
 

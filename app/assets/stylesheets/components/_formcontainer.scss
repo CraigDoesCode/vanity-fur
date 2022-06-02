@@ -11,3 +11,14 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
 }
+
+.container-dates {
+  display: flex;
+  width: 100%;
+}
+
+.form-image {
+  padding-bottom: 16px;
+  padding-top: 16px;
+  border-radius: 8px;
+}

@@ -1,11 +1,22 @@
-<div class="form-container">
-  <div class="container m-5 p-5">
-    <h1>New Rental Request</h1>
-    <%= simple_form_for [@item, @booking] do |f| %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
+
+<div class="form-body">
+<div class="form-container pb-5">
+  <div class="container container-form pt-5" style="width: 600px; height: 800px">
+    <h2>Woof Woof <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h2>
+    <%=  %>
+    <h2 class="form-heading pr-5" style= "color: white;">Get your paws on this sWAG</h2>
+    <%= image_tag @item.photos.attached? ? cl_image_path(@item.photos[0].key) :("doggreen.jpg"), class: "form-image"%>
+    <%= simple_form_for [@item, @booking] do |f|%>
+    <div class="container container-dates">
+      <%= f.input :start_date,  html5: true, class: "w-50"  %>
+      <%= f.input :end_date,  html5: true, class: "w-50"  %>
+    </div>
       <%= f.input :notes %>
-      <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+
+       <div style="text-align:center">
+        <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+       </div>
       <% end %>
   </div>
+</div>
 </div>

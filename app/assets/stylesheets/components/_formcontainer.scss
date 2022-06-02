@@ -1,4 +1,13 @@
 .container-form {
-  display: flex;
+
   align-items: center;
+}
+
+
+.form-body {
+  text-align: center;
+  background: asset-url("pinkdogs.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }

@@ -1,9 +1,10 @@
-<div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/photos/mixed-breed-puppy-half-pug-half-cavalier-king-charles-spaniel-picture-id1307607206?k=20&m=1307607206&s=612x612&w=0&h=kXYL0GHk4SRL7Kl4pJhyuCIuvSNvXyn3-zur2sAf4ew=)">
- <h2 style= "color: white">Add New Item</h2>
-</div>
 
-<div class="form-container">
-<div class="container container-form" style="width: 500px; height: 800px">
+
+<div class="form-body">
+
+<div class="form-container pb-5">
+<div class="container container-form pt-5" style="width: 500px; height: 800px">
+<h2 class="form-heading pr-5" style= "color: white;">Add your pawfect sWAGS</h2>
   <%= simple_form_for [@item] do |f| %>
     <%= f.input :price, as: :currency %>
     <%= f.input :name %>
@@ -18,5 +19,6 @@
       <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
     </div>
   <% end %>
+</div>
 </div>
 </div>

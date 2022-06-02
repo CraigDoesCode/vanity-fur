@@ -14,5 +14,20 @@
 
 .form-label {
   font-size: larger;
-  text-shadow: 1px 1px #f3f1f1;
+  text-transform: uppercase;
+  color: #f1ebe5;
+}
+
+.currency{
+  color: #f1ebe5;
+}
+
+.form-control {
+
+  border-radius: 8px;
+}
+
+.form-select {
+
+  border-radius: 8px;
 }

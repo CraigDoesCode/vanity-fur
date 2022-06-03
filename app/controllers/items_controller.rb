@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @items = Item.where(category: @item.category)
   end
 
   def new
@@ -62,6 +63,48 @@ class ItemsController < ApplicationController
   def destroy
       @item.destroy
       redirect_to items_path, status: :see_other
+  end
+
+  def my_items
+    @items = Item.where(user_id: current_user.id)
+    @all_bookings = Booking.all
+    @booking_requests = []
+    @approved_requests = []
+    @all_bookings.each do |booking|
+      @item = Item.find(booking.item_id)
+      if @item.user_id == current_user.id
+        if booking.confirmed == false && booking.notes != "rejected"
+          @booking_requests.push(booking)
+        else
+          @approved_requests.push(booking)
+        end
+      end
+    end
+  end
+
+  def shoes
+    @items = Item.where(category: "shoes")
+    render :index
+  end
+
+  def hats
+    @items = Item.where(category: "hat")
+    render :index
+  end
+
+  def hoodies
+    @items = Item.where(category: "hoodie")
+    render :index
+  end
+
+  def jackets
+    @items = Item.where(category: "jacket")
+    render :index
+  end
+
+  def harness
+    @items = Item.where(category: "harness")
+    render :index
   end
 
     private

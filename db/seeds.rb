@@ -5,10 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Booking.destroy_all
 Item.destroy_all
 User.destroy_all
 
-categories = ["jumper", "hat", "shoes", "bra", "belt", "dress"]
+categories = ["hoodie", "hat", "shoes", "hoodie", "harness"]
 User.create(email: "tilly@tilly.com", password: 123456, first_name: "Tilly", last_name: "Bishop", rating: 7)
 User.create(email: "craig@craig.com", password: 123456, first_name: "Craig", last_name: "Norford", rating: 3)
 User.create(email: "olivia@olivia.com", password: 123456, first_name: "Olivia", last_name: "McSweeney", rating: 8)
@@ -21,8 +22,9 @@ Item.create!(user: User.all.sample,
             availability: true,
             description: "Cute pink jumper with hearts and rhinestones on it.",
             rating: 8,
-            category: "jumper",
+            category: categories.sample,
             address: "Hoxton, London")
+
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Primarni bra",
@@ -30,8 +32,9 @@ Item.create!(user: User.all.sample,
             availability: false,
             description: "Big lacy black bra.",
             rating: 7,
-            category: "bra",
+            category: categories.sample,
             address: "Islington, London")
+
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Jimmy Choo Choo Heels",
@@ -39,8 +42,9 @@ Item.create!(user: User.all.sample,
             availability: true,
             description: "8 inch snake skin platform heels. Super cute for wearing around the dog park!",
             rating: 10,
-            category: "shoes",
+            category: categories.sample,
             address: "Manchester")
+
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Gucki belt",
@@ -48,8 +52,9 @@ Item.create!(user: User.all.sample,
             availability: false,
             description: "Dark brown belt with flashing lights for accessorising your pups cute little belly!",
             rating: 4,
-            category: "belt",
+            category: categories.sample,
             address: "Times Square, New York")
+
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Prader dress",
@@ -57,5 +62,5 @@ Item.create!(user: User.all.sample,
             availability: true,
             description: "Floor length LBD. Not recommended to wear to the park.",
             rating: 2,
-            category: "dress",
+            category: categories.sample,
             address: "Bern, Switzerland")

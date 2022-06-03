@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :items do
+    collection do
+      get 'shoes'
+      get 'hats'
+      get 'hoodies'
+      get 'jackets'
+      get 'harness'
+    end
     resources :bookings, only: [:show, :new, :create]
   end
   resources :bookings, only: [:destroy, :show, :index]
@@ -12,5 +19,5 @@ Rails.application.routes.draw do
   resources :users, only: :show
   get "accept_booking", to: "bookings#accept_booking"
   get "reject_booking", to: "bookings#reject_booking"
-
+  get "my_items", to: "items#my_items"
 end

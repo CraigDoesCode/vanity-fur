@@ -5,8 +5,11 @@
         <%= image_tag "https://tse1.mm.bing.net/th?id=OIP.DLwi70Wk4MA9rUMcKpRGqwHaHi&pid=Api&rs=1&c=1&qlt=95&w=111&h=113" %>
         <h1 class = "px-4 mb-0">Vanity Fur</h1>
       <% end %>
-      <%= link_to "Attire", items_path, class: "nav-link" %>
-      <%= link_to "", new_user_registration_path, class: "nav-link" %>
+      <%= link_to "Shoes", shoes_items_path, class: "nav-link" %>
+      <%= link_to "Hats", hats_items_path, class: "nav-link" %>
+      <%= link_to "Hoodies", hoodies_items_path, class: "nav-link" %>
+      <%= link_to "Jackets", jackets_items_path, class: "nav-link" %>
+      <%= link_to "Harness", harness_items_path, class: "nav-link" %>
     </div>
     <div>
       <%= form_tag items_path, method: :get, class: "d-flex", id: "search-bar" do %>
@@ -27,12 +30,13 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%= link_to "Share your sWAG", new_item_path, class: "btn btn-primary mx-5" %>
-            <%= image_tag current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= image_tag current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Home", root_path, class: "dropdown-item" %>
-              <%= link_to "All Items", items_path, class: "dropdown-item" %>
+              <%= link_to "Shop", items_path, class: "dropdown-item" %>
               <%= link_to "Add Item", new_item_path, class: "dropdown-item" %>
-              <%= link_to "Rental History", '/bookings', class: "dropdown-item" %>
+              <%= link_to "My Items", my_items_path, class: "dropdown-item" %>
+              <%= link_to "Order History", '/bookings', class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
@@ -42,6 +46,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
           </li>
         <% end %>
       </ul>

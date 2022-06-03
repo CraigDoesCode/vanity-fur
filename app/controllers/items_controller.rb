@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @items = Item.where(category: @item.category)
   end
 
   def new
@@ -62,6 +63,31 @@ class ItemsController < ApplicationController
         end
       end
     end
+  end
+
+  def shoes
+    @items = Item.where(category: "shoes")
+    render :index
+  end
+
+  def hats
+    @items = Item.where(category: "hat")
+    render :index
+  end
+
+  def hoodies
+    @items = Item.where(category: "hoodie")
+    render :index
+  end
+
+  def jackets
+    @items = Item.where(category: "jacket")
+    render :index
+  end
+
+  def harness
+    @items = Item.where(category: "harness")
+    render :index
   end
 
     private

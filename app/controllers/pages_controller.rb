@@ -6,6 +6,6 @@ class PagesController < ApplicationController
     @shoes = Item.where(category: "shoes")
     @hoodies = Item.where(category: "hoodie")
     @harnesses = Item.where(category: "harness")
-    @jackets = Item.where(category: "jacket")
+    @jackets = Item.where(category: "jackets")
   end
 end

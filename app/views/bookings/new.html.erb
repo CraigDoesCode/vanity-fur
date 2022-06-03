@@ -2,20 +2,39 @@
 <div class="form-body">
 <div class="form-container pb-5">
   <div class="container container-form pt-5" style="width: 600px; height: 800px">
-    <h2>Woof Woof <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h2>
-    <%=  %>
-    <h2 class="form-heading pr-5" style= "color: white;">Get your paws on this sWAG</h2>
-    <%= image_tag @item.photos.attached? ? cl_image_path(@item.photos[0].key) :("doggreen.jpg"), class: "form-image"%>
-    <%= simple_form_for [@item, @booking] do |f|%>
-    <div class="container container-dates">
-      <%= f.input :start_date,  html5: true, class: "w-50"  %>
-      <%= f.input :end_date,  html5: true, class: "w-50"  %>
+    <div class="form-heading pb-5">
+      <h3>Woof Woof <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h3>
+      <h2 class="form-heading pr-5" style= "color: white;">Get your paws on this sWAG</h2>
     </div>
-      <%= f.input :notes %>
+      <div class="card-trip">
+        <% if @item.photos.attached? %>
+          <%= cl_image_tag item.photos[0].key %>
+          <% else %>
+          <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+        <% end %>
+      <div class="card-trip-infos">
+      <div>
+        <h2><%= link_to @item.name, item_path(@item) %></h2>
+        <p><%= @item.description %></p>
+      </div>
+        <h2 class="card-trip-pricing">£<%= @item.price.to_i %></h2>
+        <% if @item.user.photo.attached? %>
+          <%= cl_image_tag @item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+        <% end %>
+      </div>
+     </div>
 
-       <div style="text-align:center">
-        <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
-       </div>
+      <%= simple_form_for [@item, @booking] do |f|%>
+      <div class="container container-dates">
+        <%= f.input :start_date,  html5: true, class: "w-50"  %>
+        <%= f.input :end_date,  html5: true, class: "w-50"  %>
+      </div>
+      <%= f.input :notes %>
+      <div style="text-align:center">
+         <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+      </div>
       <% end %>
   </div>
 </div>

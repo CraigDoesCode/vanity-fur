@@ -1,6 +1,6 @@
 .container-form {
-
   align-items: center;
+
 }
 
 
@@ -15,12 +15,17 @@
 
 .container-dates {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
+  padding-top: 10px;
 }
 
 .form-image {
-  padding-bottom: 16px;
-  padding-top: 16px;
+  // padding-bottom: 16px;
+  // padding-top: 16px;
+  border-radius: 5px;
+  background-size: cover;
 }
 
 .form-label {
@@ -40,4 +45,17 @@
 
 .form-select {
   border-radius: 8px;
+}
+
+.form-heading {
+ padding-bottom: 5px;
+}
+
+.image-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f1ebe5;
+  padding-top: 30px;
+  border-radius: 5px;
 }

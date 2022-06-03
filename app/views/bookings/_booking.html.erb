@@ -2,5 +2,9 @@
   <%= f.input :start_date, as: :date, html5: true %>
   <%= f.input :end_date, as: :date, html5: true %>
   <%= f.input :notes %>
+  <% if @item.user_id == current_user.id %>
+  <%= link_to "My Bookings", bookings_path, class: "btn btn-gradient btn-lg" %>
+  <%else %>
   <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+  <% end %>
 <% end %>

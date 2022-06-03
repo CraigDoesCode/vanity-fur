@@ -48,6 +48,31 @@ class ItemsController < ApplicationController
       redirect_to items_path, status: :see_other
   end
 
+  def shoes
+    @items = Item.where(category: "shoes")
+    render :index
+  end
+
+  def hats
+    @items = Item.where(category: "hat")
+    render :index
+  end
+
+  def hoodies
+    @items = Item.where(category: "hoodie")
+    render :index
+  end
+
+  def jackets
+    @items = Item.where(category: "jacket")
+    render :index
+  end
+
+  def harness
+    @items = Item.where(category: "harness")
+    render :index
+  end
+
     private
 
   def item_params

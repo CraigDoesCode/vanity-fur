@@ -29,7 +29,7 @@
       <% end %>
     <div class="card-trip-infos">
       <div>
-        <h2> <%= link_to "Request to book #{@item.name}", booking_path(booking) %></h2>
+        <h2> <%= link_to @item.name, booking_path(booking) %></h2>
         <p>Start Date: <%= booking.start_date %></p>
         <p>End Date: <%= booking.end_date %></p>
       </div>

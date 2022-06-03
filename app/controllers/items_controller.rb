@@ -8,10 +8,27 @@ class ItemsController < ApplicationController
       OR items.description ILIKE :query
       OR users.first_name ILIKE :query
       OR users.last_name ILIKE :query
+      OR items.address ILIKE :query
       SQL
       @items = Item.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      @markers = @items.geocoded.map do |item|
+        {
+          lat: item.latitude,
+          lng: item.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {item: item}),
+          image_url: helpers.asset_url("https://cdn0.iconfinder.com/data/icons/simple-pet/100/4-512.png")
+        }
+      end
     else
-      @items = Item.all.reverse
+      @items = Item.all
+      @markers = @items.geocoded.map do |item|
+        {
+          lat: item.latitude,
+          lng: item.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {item: item}),
+          image_url: helpers.asset_url("https://cdn0.iconfinder.com/data/icons/simple-pet/100/4-512.png")
+        }
+      end
     end
   end
 
@@ -64,7 +81,7 @@ class ItemsController < ApplicationController
       end
     end
   end
-  
+
   def shoes
     @items = Item.where(category: "shoes")
     render :index
@@ -99,4 +116,5 @@ class ItemsController < ApplicationController
   def set_item
       @item = Item.find(params[:id])
   end
+
 end

@@ -1,23 +1,93 @@
+<style type="text/css">
+   body { background: #f4f4f4 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+<br>
+<br>
+  <h1>Check out your orders <%= current_user.first_name %> <i class="fa-solid fa-paw"></i></h1>
+
 <div class="container">
+  <div class="container">
+  <h1>Order History</h1>
+</div>
+
 <br>
-  <h1>Check out your bookings <%= current_user.first_name %> <i class="fa-solid fa-paw"></i></h1>
-<br>
-<h3>Pending Rental Requests</h3>
-<% if @booking_requests.empty? == false %>
-  <% @booking_requests.each do |booking| %>
-    <p><%= link_to booking.item.name, booking_path(booking) %> </p>
-  <% end %>
-<% else %>
-  <p>You currently have no pending requests</p>
-<% end %>
-<br>
-<h3>Confirmed Requests</h3>
-<% if @approved_requests.empty? == false %>
-  <% @approved_requests.each do |booking| %>
-    <% if booking.notes != "rejected" %>
-      <p> <%= link_to booking.item.name, booking_path(booking) %> </p>
+<div class="container">
+  <h2>Pending Orders</h2>
+</div>
+<div class="container">
+  <% if @booking_requests.empty? == false %>
+    <br>
+    <div class="grid">
+       <% @booking_requests.each do |booking| %>
+      <% if booking.notes != "rejected" %>
+        <% @item = booking.item %>
+        <div class="card-trip">
+      <% if @item.photos.attached? %>
+        <%= cl_image_tag @item.photos[0].key %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+      <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2> <%= link_to "Request to book #{@item.name}", booking_path(booking) %></h2>
+        <p>Start Date: <%= booking.start_date %></p>
+        <p>End Date: <%= booking.end_date %></p>
+      </div>
+        <% if @item.user.photo.attached? %>
+          <%= cl_image_tag @item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+        <% end %>
+      </div>
+    </div>
     <% end %>
   <% end %>
+    </div>
 <% else %>
-  <p>You currently have no confirmed requests</p>
+  <div>
+    <p>You have no pending orders</p>
+  </div>
 <% end %>
+</div>
+<br>
+<br>
+<div class="container">
+  <h2>Confirmed Orders</h2>
+</div>
+<br>
+<div class="container" style="height: 500px;">
+  <% if @approved_requests.empty? == false %>
+    <br>
+    <div class="grid">
+       <% @approved_requests.each do |booking| %>
+      <% if booking.notes != "rejected" %>
+        <% @item = booking.item %>
+        <div class="card-trip">
+      <% if @item.photos.attached? %>
+        <%= cl_image_tag @item.photos[0].key %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+      <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2> <%= link_to "Booking for #{@item.name}", booking_path(booking) %></h2>
+        <p>Start Date: <%= booking.start_date %></p>
+        <p>End Date: <%= booking.end_date %></p>
+      </div>
+        <% if @item.user.photo.attached? %>
+          <%= cl_image_tag @item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+    </div>
+<% else %>
+  <div>
+    <p>You have no confirmed orders</p>
+  </div>
+<% end %>
+</div>
+</div>

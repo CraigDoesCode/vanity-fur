@@ -1,22 +1,22 @@
 
 
 <div class="form-body overlay">
-
-<div class="form-container pb-5">
-<div class="container container-form pt-5" style="width: 500px; height: 800px">
-<h3>You're pawsome <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h3>
-<h2 class="form-heading pr-5 pb-5" style= "color: white;">Add your pawfect sWAGS</h2>
-  <%= simple_form_for [@item] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :category, collection: ["hat", "shoes", "hoodie", "jackets", "harness"] %>
-    <%= f.input :price, as: :currency %>
-    <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
-    <%= f.input :description %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <div class = "pt-2" style="text-align:center">
-      <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+  <div class="form-container pb-5">
+    <div class="container container-form pt-5" style="width: 500px; height: 800px">
+      <h3>You're pawsome <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h3>
+      <h2 class="form-heading pr-5" style= "color: white;">Add your pawfect sWAGS</h2>
+      <%= simple_form_for [@item] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :category, collection: ["hat", "shoes", "hoodie", "jackets", "harness"] %>
+        <%= f.input :price, as: :currency %>
+        <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
+        <%= f.input :address %>
+        <%= f.input :description %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <div class = "" style="text-align:center">
+          <%= f.button :submit, class: "btn btn-gradient btn-lg"%>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
-</div>
+  </div>
 </div>

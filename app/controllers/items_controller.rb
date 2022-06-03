@@ -98,7 +98,7 @@ class ItemsController < ApplicationController
   end
 
   def jackets
-    @items = Item.where(category: "jacket")
+    @items = Item.where(category: "jackets")
     render :index
   end
 

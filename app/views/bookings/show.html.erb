@@ -1,26 +1,57 @@
+<style type="text/css">
+   body { background: rgba(208,55,55,0.3) !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
 <div class="container">
   <br>
+<<<<<<< HEAD
+=======
 
   <h3>Woof Woof <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h3>
   <h3>Item: <%= @booking.item.name %></h3>
+>>>>>>> 0e4c7edd72a967f218a1d94057f78e6540ac99fd
   <br>
+  <h3>Item: <%= @booking.item.name %></h3>
+</div>
+<br>
+  <% @item = @booking.item %>
+  <div class="container">
+    <div class="grid">
+    <div class="card-trip">
+      <% if @item.photos.attached? %>
+        <%= cl_image_tag @item.photos[0].key %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<br>
   <p>Booking Start Date: <%= @booking.start_date %> </p>
   <p>Booking End Date: <%= @booking.end_date %> </p>
   <p>Booking Notes: <%= @booking.notes %> </p>
   <% if @booking.confirmed == true  %>
-    <p>This booking is confirmed</p>
+    <p style="color: green;" >This booking is confirmed</p>
   <% else %>
-    <p>This booking is pending confirmation</p>
+    <p style="color: red;">This booking is pending confirmation</p>
   <% end %>
-  <% item = Item.find(@booking.item_id) %>
+</div>
+
+<div class="container">
+<% item = Item.find(@booking.item_id) %>
   <% if item.user_id == current_user.id %>
     <% if @booking.confirmed == false %>
       <%= link_to "Accept Request", accept_booking_path(booking: @booking), class: "btn btn-success" %>
+      |
       <%= link_to "Reject Request", reject_booking_path(booking: @booking), class: "btn btn-danger" %>
     <% end %>
   <% end %>
   <br>
-  <% if @booking.item.user_id == current_user.id %>
+</div>
+
+<div class="container" style="height: 200px">
+<% if @booking.item.user_id == current_user.id %>
     <br>
     <%= link_to "Back to your items", my_items_path, class: "btn btn-primary" %>
   <% else %>

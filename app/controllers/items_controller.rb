@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
       end
     end
   end
-  
+
   def shoes
     @items = Item.where(category: "shoes")
     render :index

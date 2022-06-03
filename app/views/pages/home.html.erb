@@ -9,7 +9,143 @@
   </div>
 </div>
 <%# show all Items %>
+
 <div class="container pb-5">
-  <h2 class="my-3">All Attire</h2>
+  <h2 class="mt-3"><%= link_to "Shop Hats", hats_items_path %></h2>
+  <div class="grid">
+    <% @hats.each do |item| %>
+      <%= link_to(item_path(item)) do %>
+        <div class="card-trip h-100">
+          <% if item.photos.attached? %>
+            <%= cl_image_tag item.photos[0].key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+          <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= item.name %></h2>
+            <p><%= item.description %></p>
+          </div>
+            <h2 class="card-trip-pricing">£<%= item.price.to_i %></h2>
+            <% if item.user.photo.attached? %>
+              <%= cl_image_tag item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+              <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2 class="mt-3"><%= link_to "Shop shoes", shoes_items_path %></h2>
+  <div class="grid">
+    <% @shoes.each do |item| %>
+      <%= link_to(item_path(item)) do %>
+        <div class="card-trip h-100">
+          <% if item.photos.attached? %>
+            <%= cl_image_tag item.photos[0].key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+          <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= item.name %></h2>
+            <p><%= item.description %></p>
+          </div>
+            <h2 class="card-trip-pricing">£<%= item.price.to_i %></h2>
+            <% if item.user.photo.attached? %>
+              <%= cl_image_tag item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+              <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <h2 class="mt-3"><%= link_to "Shop Hoodies", hoodies_items_path %></h2>
+  <div class="grid">
+    <% @hoodies.each do |item| %>
+      <%= link_to(item_path(item)) do %>
+        <div class="card-trip h-100">
+          <% if item.photos.attached? %>
+            <%= cl_image_tag item.photos[0].key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= item.name %></h2>
+              <p><%= item.description %></p>
+            </div>
+            <h2 class="card-trip-pricing">£<%= item.price.to_i %></h2>
+            <% if item.user.photo.attached? %>
+              <%= cl_image_tag item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+              <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2 class="mt-3"><%= link_to "Shop Harnesses", harness_items_path %></h2>
+  <div class="grid">
+    <% @harnesses.each do |item| %>
+      <%= link_to(item_path(item)) do %>
+        <div class="card-trip h-100">
+          <% if item.photos.attached? %>
+            <%= cl_image_tag item.photos[0].key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+          <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= item.name %></h2>
+            <p><%= item.description %></p>
+          </div>
+            <h2 class="card-trip-pricing">£<%= item.price.to_i %></h2>
+            <% if item.user.photo.attached? %>
+              <%= cl_image_tag item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+              <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2 class="mt-3"><%= link_to "Shop Jackets", jackets_items_path %></h2>
+  <div class="grid">
+    <% @jackets.each do |item| %>
+      <%= link_to(item_path(item)) do %>
+        <div class="card-trip h-100">
+          <% if item.photos.attached? %>
+            <%= cl_image_tag item.photos[0].key %>
+          <% else %>
+            <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+          <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= item.name %></h2>
+            <p><%= item.description %></p>
+          </div>
+            <h2 class="card-trip-pricing">£<%= item.price.to_i %></h2>
+            <% if item.user.photo.attached? %>
+              <%= cl_image_tag item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+            <% else %>
+              <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <h2 class="my-3"> <%= link_to "All Attire", items_path %></h2>
   <%= render "items/all" %>
 </div>

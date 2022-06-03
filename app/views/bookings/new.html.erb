@@ -8,7 +8,7 @@
     </div>
       <div class="card-trip">
         <% if @item.photos.attached? %>
-          <%= cl_image_tag item.photos[0].key %>
+          <%= cl_image_tag @item.photos[0].key, class: "cover" %>
           <% else %>
           <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
         <% end %>

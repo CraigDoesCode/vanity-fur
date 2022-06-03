@@ -1,4 +1,43 @@
 .container-form {
-  display: flex;
+
   align-items: center;
+}
+
+
+.form-body {
+  text-align: center;
+  background: asset-url("pinkdogs.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+
+
+.container-dates {
+  display: flex;
+  width: 100%;
+}
+
+.form-image {
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+
+.form-label {
+  font-size: larger;
+  text-transform: uppercase;
+  color: #f1ebe5;
+}
+
+.currency{
+  color: #f1ebe5;
+}
+
+.form-control {
+
+  border-radius: 8px;
+}
+
+.form-select {
+  border-radius: 8px;
 }

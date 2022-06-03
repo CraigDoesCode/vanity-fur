@@ -5,11 +5,11 @@
         <%= image_tag "https://tse1.mm.bing.net/th?id=OIP.DLwi70Wk4MA9rUMcKpRGqwHaHi&pid=Api&rs=1&c=1&qlt=95&w=111&h=113" %>
         <h1 class = "px-4 mb-0">Vanity Fur</h1>
       <% end %>
-      <%= link_to "Shop", items_path, class: "nav-link" %>
-      <%= link_to "Hats", items_path, class: "nav-link" %>
-      <%= link_to "Hoodies", items_path, class: "nav-link" %>
-      <%= link_to "Jackets", items_path, class: "nav-link" %>
-      <%= link_to "Harness", items_path, class: "nav-link" %>
+      <%= link_to "Shoes", shoes_items_path, class: "nav-link" %>
+      <%= link_to "Hats", hats_items_path, class: "nav-link" %>
+      <%= link_to "Hoodies", hoodies_items_path, class: "nav-link" %>
+      <%= link_to "Jackets", jackets_items_path, class: "nav-link" %>
+      <%= link_to "Harness", harness_items_path, class: "nav-link" %>
     </div>
     <div>
       <%= form_tag items_path, method: :get, class: "d-flex", id: "search-bar" do %>

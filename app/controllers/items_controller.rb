@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @items = Item.where(category: @item.category)
   end
 
   def new

@@ -9,13 +9,13 @@
   font-size: 32px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  // border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .index-card {
-  background: asset-url("corgi.jpg");
-  background-position: center; /* Center the image */
+  background: asset-url("greenfrenchie.jpg");
+  background-position: top; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
 }

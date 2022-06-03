@@ -8,7 +8,7 @@
 <h2 class="form-heading pr-5 pb-5" style= "color: white;">Add your pawfect sWAGS</h2>
   <%= simple_form_for [@item] do |f| %>
     <%= f.input :name %>
-    <%= f.input :category, collection: ["Hats", "Shoes", "Hoodies", "Jackets", "Leads/Harness", "Other"] %>
+    <%= f.input :category, collection: ["hat", "shoes", "hoodie", "jackets", "harness"] %>
     <%= f.input :price, as: :currency %>
     <%= f.input :size, collection: ["Small", "Medium", "Large"] %>
     <%= f.input :description %>

@@ -10,7 +10,7 @@
   <% if @booking.confirmed == true  %>
     <p>This booking is confirmed</p>
   <% else %>
-    <p>This booking is <strong>not</strong> confirmed</p>
+    <p>This booking is pending confirmation</p>
   <% end %>
   <% item = Item.find(@booking.item_id) %>
   <% if item.user_id == current_user.id %>
@@ -18,5 +18,12 @@
       <%= link_to "Accept Request", accept_booking_path(booking: @booking), class: "btn btn-success" %>
       <%= link_to "Reject Request", reject_booking_path(booking: @booking), class: "btn btn-danger" %>
     <% end %>
+  <% end %>
+  <br>
+  <% if @booking.item.user_id == current_user.id %>
+    <br>
+    <%= link_to "Back to your items", my_items_path, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to "Back to rental history", bookings_path, class: "btn btn-primary" %>
   <% end %>
 </div>

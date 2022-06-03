@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   resources :users, only: :show
   get "accept_booking", to: "bookings#accept_booking"
   get "reject_booking", to: "bookings#reject_booking"
-
+  get "my_items", to: "items#my_items"
 end

@@ -4,14 +4,13 @@
 <br>
 <br>
 <div class="container">
-  <div class="container text-center">
+  <div class="container">
   <h1>My Items</h1>
 </div>
 <br>
-<br>
 <div class="container">
   <% if @items.empty? == false %>
-  <div class="grid d-flex justify-content-center">
+  <div class="grid">
   <% @items.each do |item| %>
     <div class="card-trip">
       <% if item.photos.attached? %>
@@ -34,21 +33,21 @@
     </div>
   <% end %>
   <% else %>
-     <div class="text-center">
+     <div>
     <p>You have no items</p>
   </div>
   <% end %>
 </div>
 <br>
 <br>
-<div class="container text-center">
-  <h2>Pending Rental Requests</h2>
+<div class="container">
+  <h2>Pending Order Requests</h2>
 </div>
 <br>
 <div class="container">
   <% if @booking_requests.empty? == false %>
     <br>
-    <div class="grid d-flex justify-content-center">
+    <div class="grid">
        <% @booking_requests.each do |booking| %>
       <% if booking.notes != "rejected" %>
         <% @item = booking.item %>
@@ -75,21 +74,21 @@
   <% end %>
     </div>
 <% else %>
-  <div class="text-center">
+  <div>
     <p>You have no pending requests</p>
   </div>
 <% end %>
 </div>
 <br>
 <br>
-<div class="container text-center">
-  <h2>Confirmed Rentals</h2>
+<div class="container">
+  <h2>Confirmed Orders</h2>
 </div>
 <br>
 <div class="container" style="height: 500px;">
   <% if @approved_requests.empty? == false %>
     <br>
-    <div class="grid d-flex justify-content-center">
+    <div class="grid">
        <% @approved_requests.each do |booking| %>
       <% if booking.notes != "rejected" %>
         <% @item = booking.item %>
@@ -116,8 +115,8 @@
   <% end %>
     </div>
 <% else %>
-  <div class="text-center">
-    <p>You have no confirmed rentals</p>
+  <div>
+    <p>You have no confirmed orders</p>
   </div>
 <% end %>
 </div>

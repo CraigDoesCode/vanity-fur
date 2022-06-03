@@ -1,11 +1,12 @@
 #carousel-whole {
   width: 50%;
 }
-
+#black-text .form-label {
+  color: black;
+}
 .details {
-  background-color: hsl(234%, 71%, 75%);
-  border-radius: 0.5rem;
-  border: 3px solid hsl(234%, 71%, 30%);
+  border-left: 1px solid $blue;
+  color: $blue !important;
 }
 
 .avatar-show {

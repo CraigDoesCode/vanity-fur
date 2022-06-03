@@ -21,7 +21,8 @@ Item.create!(user: User.all.sample,
             availability: true,
             description: "Cute pink jumper with hearts and rhinestones on it.",
             rating: 8,
-            category: "jumper")
+            category: "jumper",
+            address: "Hoxton, London")
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Primarni bra",
@@ -29,7 +30,8 @@ Item.create!(user: User.all.sample,
             availability: false,
             description: "Big lacy black bra.",
             rating: 7,
-            category: "bra")
+            category: "bra",
+            address: "Islington, London")
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Jimmy Choo Choo Heels",
@@ -37,7 +39,8 @@ Item.create!(user: User.all.sample,
             availability: true,
             description: "8 inch snake skin platform heels. Super cute for wearing around the dog park!",
             rating: 10,
-            category: "shoes")
+            category: "shoes",
+            address: "Manchester")
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Gucki belt",
@@ -45,7 +48,8 @@ Item.create!(user: User.all.sample,
             availability: false,
             description: "Dark brown belt with flashing lights for accessorising your pups cute little belly!",
             rating: 4,
-            category: "belt")
+            category: "belt",
+            address: "Times Square, New York")
 Item.create!(user: User.all.sample,
             price: rand(1..150),
             name: "Prader dress",
@@ -53,4 +57,5 @@ Item.create!(user: User.all.sample,
             availability: true,
             description: "Floor length LBD. Not recommended to wear to the park.",
             rating: 2,
-            category: "dress")
+            category: "dress",
+            address: "Bern, Switzerland")

@@ -34,10 +34,11 @@
     </div>
   <% end %>
   <% else %>
-    <p>You currently have no items</p>
+     <div class="text-center">
+    <p>You have no items</p>
+  </div>
   <% end %>
 </div>
-<br>
 <br>
 <br>
 <div class="container text-center">
@@ -59,7 +60,7 @@
       <% end %>
     <div class="card-trip-infos">
       <div>
-        <h2>Booking for <%= link_to @item.name, booking_path(booking) %></h2>
+        <h2> <%= link_to "Request to book #{@item.name}", booking_path(booking) %></h2>
         <p>Start Date: <%= booking.start_date %></p>
         <p>End Date: <%= booking.end_date %></p>
       </div>
@@ -75,7 +76,7 @@
     </div>
 <% else %>
   <div class="text-center">
-    <p>You currently have no pending requests</p>
+    <p>You have no pending requests</p>
   </div>
 <% end %>
 </div>
@@ -85,7 +86,7 @@
   <h2>Confirmed Rentals</h2>
 </div>
 <br>
-<div class="container" style="height: 400px;">
+<div class="container" style="height: 500px;">
   <% if @approved_requests.empty? == false %>
     <br>
     <div class="grid d-flex justify-content-center">
@@ -116,7 +117,7 @@
     </div>
 <% else %>
   <div class="text-center">
-    <p>You currently have no confirmed rentals</p>
+    <p>You have no confirmed rentals</p>
   </div>
 <% end %>
 </div>

@@ -1,5 +1,123 @@
-<h1>My Items</h1>
+<style type="text/css">
+   body { background: rgba(208,55,55,0.3) !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
 <br>
-<% @items.each do |item| %>
-  <%= item.name %>
+<br>
+<div class="container">
+  <div class="container text-center">
+  <h1>My Items</h1>
+</div>
+<br>
+<br>
+<div class="container">
+  <% if @items.empty? == false %>
+  <div class="grid d-flex justify-content-center">
+  <% @items.each do |item| %>
+    <div class="card-trip">
+      <% if item.photos.attached? %>
+        <%= cl_image_tag item.photos[0].key %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+      <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= link_to item.name, item_path(item) %></h2>
+        <p><%= item.description %></p>
+      </div>
+        <h2 class="card-trip-pricing">£<%= item.price.to_i %></h2>
+        <% if item.user.photo.attached? %>
+          <%= cl_image_tag item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% else %>
+    <p>You currently have no items</p>
+  <% end %>
+</div>
+<br>
+<br>
+<br>
+<div class="container text-center">
+  <h2>Pending Rental Requests</h2>
+</div>
+<br>
+<div class="container">
+  <% if @booking_requests.empty? == false %>
+    <br>
+    <div class="grid d-flex justify-content-center">
+       <% @booking_requests.each do |booking| %>
+      <% if booking.notes != "rejected" %>
+        <% @item = booking.item %>
+        <div class="card-trip">
+      <% if @item.photos.attached? %>
+        <%= cl_image_tag @item.photos[0].key %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+      <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2>Booking for <%= link_to @item.name, booking_path(booking) %></h2>
+        <p>Start Date: <%= booking.start_date %></p>
+        <p>End Date: <%= booking.end_date %></p>
+      </div>
+        <% if @item.user.photo.attached? %>
+          <%= cl_image_tag @item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+    </div>
+<% else %>
+  <div class="text-center">
+    <p>You currently have no pending requests</p>
+  </div>
 <% end %>
+</div>
+<br>
+<br>
+<div class="container text-center">
+  <h2>Confirmed Rentals</h2>
+</div>
+<br>
+<div class="container" style="height: 400px;">
+  <% if @approved_requests.empty? == false %>
+    <br>
+    <div class="grid d-flex justify-content-center">
+       <% @approved_requests.each do |booking| %>
+      <% if booking.notes != "rejected" %>
+        <% @item = booking.item %>
+        <div class="card-trip">
+      <% if @item.photos.attached? %>
+        <%= cl_image_tag @item.photos[0].key %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
+      <% end %>
+    <div class="card-trip-infos">
+      <div>
+        <h2> <%= link_to "Booking for #{@item.name}", booking_path(booking) %></h2>
+        <p>Start Date: <%= booking.start_date %></p>
+        <p>End Date: <%= booking.end_date %></p>
+      </div>
+        <% if @item.user.photo.attached? %>
+          <%= cl_image_tag @item.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <img src="https://media.istockphoto.com/photos/illustration-of-smiling-happy-man-with-laptop-sitting-in-armchair-picture-id1226886130?b=1&k=20&m=1226886130&s=170667a&w=0&h=jMvDQqfHSx2PEdvvRtSNX6FVXPK-_WZ1UzBRToBHv4g=", class="card-trip-user avatar-bordered" >
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+    </div>
+<% else %>
+  <div class="text-center">
+    <p>You currently have no confirmed rentals</p>
+  </div>
+<% end %>
+</div>
+</div>

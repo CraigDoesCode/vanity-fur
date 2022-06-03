@@ -35,6 +35,10 @@ class ItemsController < ApplicationController
       redirect_to items_path, status: :see_other
   end
 
+  def my_items
+    @items = Item.where(user_id: current_user.id)
+  end
+
     private
 
   def item_params

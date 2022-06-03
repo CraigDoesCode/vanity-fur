@@ -1,6 +1,6 @@
 <div class="container">
 <br>
-  <h1>Rental History</h1>
+  <h1>Check out your bookings <%= current_user.first_name %> <i class="fa-solid fa-paw"></i></h1>
 <br>
 <h3>Pending Rental Requests</h3>
 <% if @booking_requests.empty? == false %>

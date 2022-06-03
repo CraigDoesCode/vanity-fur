@@ -3,41 +3,39 @@
 </style>
 <div class="container">
   <br>
-
+<div class="container d-flex">
+<div class="container">
   <h3>Woof Woof <%= current_user.first_name %> <i class="fa-solid fa-paw"></i> </h3>
   <br>
   <h3>Item: <%= @booking.item.name %></h3>
-</div>
 <br>
-  <% @item = @booking.item %>
-  <div class="container">
-    <div class="grid">
-    <div class="card-trip">
+<% @item = @booking.item %>
       <% if @item.photos.attached? %>
-        <%= cl_image_tag @item.photos[0].key %>
+        <%= cl_image_tag @item.photos[0].key, style:"height: 500px;"%>
       <% else %>
         <img src="https://images.unsplash.com/photo-1592028545328-7ff4385e450f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fGRvZyUyMGluJTIwY2xvdGhlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" />
       <% end %>
-    </div>
   </div>
-</div>
-
-<div class="container">
-<br>
-  <p>Booking Start Date: <%= @booking.start_date %> </p>
-  <p>Booking End Date: <%= @booking.end_date %> </p>
-  <p>Booking Notes: <%= @booking.notes %> </p>
-  <% if @booking.confirmed == true  %>
-    <p style="color: green;" >This booking is confirmed</p>
-  <% else %>
-    <p style="color: red;">This booking is pending confirmation</p>
-  <% end %>
+  <div class="container" style="padding-top: 200px; font-size: 20px">
+    <p>Booking Start Date: <%= @booking.start_date %> </p>
+    <br>
+    <p>Booking End Date: <%= @booking.end_date %> </p>
+    <br>
+    <p>Booking Notes: <%= @booking.notes %> </p>
+    <br>
+    <% if @booking.confirmed == true  %>
+      <p style="color: green;" >This booking is confirmed</p>
+    <% else %>
+      <p style="color: red;">This booking is pending confirmation</p>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
 <% item = Item.find(@booking.item_id) %>
   <% if item.user_id == current_user.id %>
     <% if @booking.confirmed == false %>
+    <br>
       <%= link_to "Accept Request", accept_booking_path(booking: @booking), class: "btn btn-success" %>
       |
       <%= link_to "Reject Request", reject_booking_path(booking: @booking), class: "btn btn-danger" %>
